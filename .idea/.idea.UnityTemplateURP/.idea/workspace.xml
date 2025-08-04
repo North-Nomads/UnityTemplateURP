@@ -5,9 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cd204ba7-d195-47e0-a6ee-7f076d160efd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/MVVM/Binders.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/MVVM/Binders/EmptyMethodBinder.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/MVVM/Binders/EmptyMethodBinder.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/MVVM/Binders/GenericMethodBinder.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/MVVM/Binders/GenericMethodBinder.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/MVVM/Binders/MethodBinder.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/MVVM/Binders/MethodBinder.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/MVVM/Binders/ObservableBinder.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/MVVM/Binders/ObservableBinder.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/MVVM/Binders/UnityEventBinders.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/MVVM/Binders/UnityEventBinders/SpriteToUnityEventBinder.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/MVVM/Binders/UnityEventBinders/SpriteToUnityEventBinder.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/MVVM/Binders/UnityEventBinders/StringToUnityEventBinder.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/MVVM/Binders/UnityEventBinders/StringToUnityEventBinder.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/MVVM/Binders/UnityEventBinders/UnityEventBinder.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/MVVM/Binders/UnityEventBinders/UnityEventBinder.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/MVVM/ViewModels.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/MVVM/ViewModels/ResourceViewModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/MVVM/ViewModels/ResourceViewModel.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.UnityTemplateURP/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UnityTemplateURP/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/UI/Views/WorldGameplayRootViewModel.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/UI/Views/WorldGameplayRootViewModel.cs.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +49,8 @@
   }
 }]]></component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/b0/03477ec7/IDisposable.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Scripts/MVVM/ViewModels/ResourceViewModel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Scripts/Services/Windows/IWindowContainer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Scripts/Services/Windows/WindowContainer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.gustavopsantos.reflex@802d9310e3bc/Core/Binding.cs" root0="SKIP_HIGHLIGHTING" />
@@ -109,7 +130,7 @@
       <workItem from="1754318480634" duration="631000" />
       <workItem from="1754329140643" duration="972000" />
       <workItem from="1754330130308" duration="1390000" />
-      <workItem from="1754331541364" duration="8531000" />
+      <workItem from="1754331541364" duration="10705000" />
     </task>
     <servers />
   </component>
