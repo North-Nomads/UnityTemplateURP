@@ -4,7 +4,6 @@ using _Project.Infrastructure.SaveLoad;
 using _Project.Services.CurrentLevelProgress;
 using _Project.Services.PlayerProgress;
 using _Project.UI.GameWindows;
-using _Project.UI.Services;
 using _Project.UI.Services.GameWindows;
 
 namespace _Project.Services.States
@@ -43,7 +42,6 @@ namespace _Project.Services.States
             };
             _levelProgress.WaveCleared += (_, __) =>
             {
-                _inGameHUD.SetNextWaveTimer(_levelProgress.GetCurrentWaveTimer());
             };
             _levelProgress.LevelCleared += (_, __) =>
             {
@@ -57,7 +55,6 @@ namespace _Project.Services.States
 
         private void StartGame()
         {
-            _inGameHUD.SetNextWaveTimer(_levelProgress.LoadedWave.SecondsDelayBeforeWave);
             _gameWindow.Open(GameWindowId.InGameHUD);
         }
 
