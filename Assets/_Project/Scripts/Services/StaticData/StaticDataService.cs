@@ -10,7 +10,7 @@ namespace _Project.StaticData
     public class ScriptableStaticData : IStaticData
     {
         private Dictionary<GameWindowId, GameWindowConfig> _gameWindowConfigs;
-        private Dictionary<WindowId, WindowConfig> _windowConfigs;
+        private Dictionary<FullScreenWindowId, WindowConfig> _windowConfigs;
         private Dictionary<int, LevelConfig> _levels;
         private Texture2D _tileAtlas;
         private LineRenderer _wirePrefab;
@@ -27,8 +27,8 @@ namespace _Project.StaticData
         public LevelConfig ForLevel(int levelID)
             => _levels.GetValueOrDefault(levelID);
 
-        public WindowConfig ForWindow(WindowId windowID)
-            => _windowConfigs.GetValueOrDefault(windowID);
+        public WindowConfig ForWindow(FullScreenWindowId fullScreenWindowId)
+            => _windowConfigs.GetValueOrDefault(fullScreenWindowId);
 
         public GameWindowConfig ForGameWindow(GameWindowId windowId)
             => _gameWindowConfigs.GetValueOrDefault(windowId);
@@ -39,6 +39,6 @@ namespace _Project.StaticData
 
         private void LoadWindows()
             => _windowConfigs = Resources.Load<WindowStaticData>("UI/Windows").Configs
-                .ToDictionary(x => x.WindowId, x => x);
+                .ToDictionary(x => x.fullScreenWindowId, x => x);
     }
 }

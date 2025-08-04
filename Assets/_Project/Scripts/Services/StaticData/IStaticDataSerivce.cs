@@ -8,7 +8,7 @@ namespace _Project.StaticData
     {
         void LoadStaticData();
         LevelConfig ForLevel(int levelID);
-        WindowConfig ForWindow(WindowId endGame);
+        WindowConfig ForWindow(FullScreenWindowId endGame);
         GameWindowConfig ForGameWindow(GameWindowId endGame);
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace _Project.UI.Services.Windows
 {
-    public enum WindowId
+    public enum FullScreenWindowId
     {
         Unknown = 0,
         Hub = 1,

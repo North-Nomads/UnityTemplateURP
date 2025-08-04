@@ -14,7 +14,7 @@ namespace _Project.UI.Windows
         private void Awake()
         {
             muteToggle.onValueChanged.AddListener(ToggleMute);
-            backButton.onClick.AddListener(() => WindowService.ReturnToPreviousWindow());
+            backButton.onClick.AddListener(() => WindowContainer.ReturnToPreviousWindow());
         }
 
         public void ToggleMute(bool value) =>

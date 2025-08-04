@@ -10,7 +10,7 @@ namespace _Project.UI.Services.Factory
     public interface IUIFactory 
     {
         void CreateUIRoot();
-        WindowBase InstantiateWindow(WindowId windowID);
+        WindowBase InstantiateWindow(FullScreenWindowId fullScreenWindowId);
         GameWindowBase InstantiateWindow(GameWindowId windowID);
         List<LevelSelectButton> InstantiateLevelButtons(int totalLevels, Transform parent);
     }

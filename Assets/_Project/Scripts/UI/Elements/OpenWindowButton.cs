@@ -1,17 +1,18 @@
 using _Project.UI.Services.Windows;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace _Project.UI.Elements
 {
     public class OpenWindowButton : MonoBehaviour
     {
-        [SerializeField] private WindowId windowId;
+        [FormerlySerializedAs("windowId")] [SerializeField] private FullScreenWindowId fullScreenWindowId;
         private Button _button;
-        private IWindowService _windowService;
+        private IWindowContainer _windowContainer;
 
-        public void Construct(IWindowService windowService) 
-            => _windowService = windowService;
+        public void Construct(IWindowContainer windowContainer) 
+            => _windowContainer = windowContainer;
 
         private void Awake()
         {
@@ -20,6 +21,6 @@ namespace _Project.UI.Elements
         }
 
         private void Open() 
-            => _windowService.Open(windowId);
+            => _windowContainer.Open(fullScreenWindowId);
     }
 }

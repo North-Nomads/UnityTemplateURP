@@ -13,7 +13,7 @@ namespace _Project.Services.States
         public IEnumerable<ISavedProgressReader> SaveReaderServices { get; }
         private readonly IPersistentProgress _progress;
         private readonly GameStateMachine _stateMachine;
-        private readonly IWindowService _windowService;
+        private readonly IWindowContainer _windowContainer;
         private readonly IAssetProvider _assetProvider;
         private readonly IGameFactory _gameFactory;
         private readonly IUIFactory _uiFactory;
@@ -21,7 +21,7 @@ namespace _Project.Services.States
 
         public HubState(GameStateMachine gameStateMachine,
             IGameFactory gameFactory, IPersistentProgress progress, IUIFactory uiFactory, 
-            IWindowService windowService, IEnumerable<ISavedProgressReader> saveReaderServices,
+            IWindowContainer windowContainer, IEnumerable<ISavedProgressReader> saveReaderServices,
             IAssetProvider assetProvider)
         {
             SaveReaderServices = saveReaderServices;
@@ -29,13 +29,13 @@ namespace _Project.Services.States
             _gameFactory = gameFactory;
             _progress = progress;
             _uiFactory = uiFactory;
-            _windowService = windowService;
+            _windowContainer = windowContainer;
             _assetProvider = assetProvider;
         }
 
         public void Enter()
         {
-            _windowService.CleanUp();
+            _windowContainer.CleanUp();
         }
 
         public void Exit()

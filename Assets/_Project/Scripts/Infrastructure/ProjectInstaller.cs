@@ -34,7 +34,7 @@ namespace _Project.Infrastructure
             builder.AddScoped(typeof(UIFactory), typeof(IUIFactory));
             builder.AddScoped(typeof(LevelProgress), typeof(ILevelProgress));
             builder.AddScoped(typeof(InGameTimeService), typeof(IInGameTimeService));
-            builder.AddScoped(typeof(WindowService), typeof(IWindowService));
+            builder.AddScoped(typeof(WindowContainer), typeof(IWindowContainer));
             builder.AddScoped(typeof(GameWindow), typeof(IGameWindow));
             
 

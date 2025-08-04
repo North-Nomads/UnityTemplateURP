@@ -31,20 +31,20 @@ namespace _Project.UI.Services.Factory
         public void CreateUIRoot()
             => _uiRoot = _assets.Instantiate(UIRootPath).transform;
 
-        public WindowBase InstantiateWindow(WindowId windowID)
+        public WindowBase InstantiateWindow(FullScreenWindowId fullScreenWindowId)
         {
-            var window = CreateSpecificWindow(windowID);
+            var window = CreateSpecificWindow(fullScreenWindowId);
             window.transform.SetAsFirstSibling();
             window.gameObject.SetActive(false);
             return window;
 
-            WindowBase CreateSpecificWindow(WindowId windowId)
+            WindowBase CreateSpecificWindow(FullScreenWindowId windowId)
             {
                 return windowId switch
                 {
-                    WindowId.Hub => CreateHubMenu(),
-                    WindowId.Settings => CreateSettingsMenu(),
-                    WindowId.Levels => CreateLevelsMenu(),
+                    FullScreenWindowId.Hub => CreateHubMenu(),
+                    FullScreenWindowId.Settings => CreateSettingsMenu(),
+                    FullScreenWindowId.Levels => CreateLevelsMenu(),
                     _ => null,
                 };
             }
@@ -52,14 +52,14 @@ namespace _Project.UI.Services.Factory
 
         private WindowBase CreateLevelsMenu()
         {
-            WindowConfig config = _staticData.ForWindow(WindowId.Levels);
+            WindowConfig config = _staticData.ForWindow(FullScreenWindowId.Levels);
             var window = Object.Instantiate(config.Prefab, _uiRoot);
             return window;
         }
 
         private WindowBase CreateSettingsMenu()
         {
-            WindowConfig config = _staticData.ForWindow(WindowId.Settings);
+            WindowConfig config = _staticData.ForWindow(FullScreenWindowId.Settings);
             var window = Object.Instantiate(config.Prefab, _uiRoot);
             return window;
         }
@@ -153,7 +153,7 @@ namespace _Project.UI.Services.Factory
 
         private WindowBase CreateHubMenu()
         {
-            WindowConfig config = _staticData.ForWindow(WindowId.Hub);
+            WindowConfig config = _staticData.ForWindow(FullScreenWindowId.Hub);
             var window = Object.Instantiate(config.Prefab, _uiRoot);
             return window;
         }

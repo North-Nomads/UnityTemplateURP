@@ -19,7 +19,7 @@ namespace _Project.Services.States
         private IExitableState _currentState;
 
         public GameStateMachine(IPersistentProgress persistentProgress, ISaveLoad saveLoad, IGameFactory gameFactory,
-            IUIFactory uiFactory, IWindowService windowService, IAssetProvider assetProvider, IStaticData staticData,
+            IUIFactory uiFactory, IWindowContainer windowContainer, IAssetProvider assetProvider, IStaticData staticData,
             IGameWindow gameWindow, ILevelProgress levelProgress, IInGameTimeService timeService, IEnumerable<ISavedProgressReader> saveReaderServices)
         {
             _states = new Dictionary<Type, IExitableState>
@@ -27,7 +27,7 @@ namespace _Project.Services.States
                 [typeof(BootstrapState)] = new BootstrapState(this),
                 [typeof(LoadProgressState)] = new LoadProgressState(this, persistentProgress, saveLoad),
                 [typeof(LoadHubState)] = new LoadHubState(this),
-                [typeof(HubState)] = new HubState(this, gameFactory, persistentProgress, uiFactory, windowService, saveReaderServices, assetProvider),
+                [typeof(HubState)] = new HubState(this, gameFactory, persistentProgress, uiFactory, windowContainer, saveReaderServices, assetProvider),
                 [typeof(LoadLevelState)] = new LoadLevelState(this, gameFactory, persistentProgress, staticData, gameWindow, uiFactory, levelProgress),
                 [typeof(LoopLevelState)] = new LoopLevelState(this, saveLoad, gameWindow, levelProgress),
                 [typeof(FinishedLevelState)] = new FinishedLevelState(this, persistentProgress, gameWindow, persistentProgress, timeService)
