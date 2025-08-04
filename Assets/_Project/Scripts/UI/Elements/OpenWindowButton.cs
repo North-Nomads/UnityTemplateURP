@@ -7,7 +7,7 @@ namespace _Project.UI.Elements
 {
     public class OpenWindowButton : MonoBehaviour
     {
-        [FormerlySerializedAs("windowId")] [SerializeField] private FullScreenWindowId fullScreenWindowId;
+        [FormerlySerializedAs("fullScreenWindowId")] [FormerlySerializedAs("windowId")] [SerializeField] private HubWindowId hubWindowId;
         private Button _button;
         private IWindowContainer _windowContainer;
 
@@ -21,6 +21,6 @@ namespace _Project.UI.Elements
         }
 
         private void Open() 
-            => _windowContainer.Open(fullScreenWindowId);
+            => _windowContainer.Open(hubWindowId);
     }
 }

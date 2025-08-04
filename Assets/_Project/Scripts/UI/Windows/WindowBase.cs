@@ -11,18 +11,18 @@ namespace _Project.UI.Windows
     public abstract class WindowBase : MonoBehaviour
     {
         protected IPersistentProgress PersistentProgress;
-        protected FullScreenWindowId ThisFullScreenWindowId;
+        protected HubWindowId ThisHubWindowId;
         protected IWindowContainer WindowContainer;
         protected ISaveLoad SaveLoad;
         protected IGameFactory GameFactory;
         protected IUIFactory UIFactory;
 
         public virtual void ConstructWindow(IPersistentProgress progress,
-            FullScreenWindowId fullScreenWindowId, IWindowContainer windowContainer, ISaveLoad saveLoad, IGameFactory gameFactory,
+            HubWindowId hubWindowId, IWindowContainer windowContainer, ISaveLoad saveLoad, IGameFactory gameFactory,
             IUIFactory uiFactory)
         {
             PersistentProgress = progress;
-            ThisFullScreenWindowId = fullScreenWindowId;
+            ThisHubWindowId = hubWindowId;
             WindowContainer = windowContainer;
             SaveLoad = saveLoad;
             GameFactory = gameFactory;
@@ -33,7 +33,7 @@ namespace _Project.UI.Windows
         protected void CloseWindow() 
             => WindowContainer.ReturnToPreviousWindow();
         protected void ReturnToHub()
-            => WindowContainer.Open(FullScreenWindowId.Hub);
+            => WindowContainer.Open(HubWindowId.Hub);
         protected virtual void OnStart()
         {
             Initialize();

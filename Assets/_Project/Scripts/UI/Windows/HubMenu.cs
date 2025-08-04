@@ -26,16 +26,16 @@ namespace _Project.UI.Windows
             exit.onClick.AddListener(CloseGame);
         }
 
-        public override void ConstructWindow(IPersistentProgress progress, FullScreenWindowId fullScreenWindowId, IWindowContainer windowContainer,
+        public override void ConstructWindow(IPersistentProgress progress, HubWindowId hubWindowId, IWindowContainer windowContainer,
             ISaveLoad saveLoad, IGameFactory gameFactory, IUIFactory uiFactory)
         {
-            base.ConstructWindow(progress, fullScreenWindowId, windowContainer, saveLoad, gameFactory, uiFactory);
+            base.ConstructWindow(progress, hubWindowId, windowContainer, saveLoad, gameFactory, uiFactory);
             if (!PersistentProgress.Progress.HasFinishedTutorial)
                 startGameButtonText.text = "START TUTORIAL";
         }
 
         private void DisplayAllLevelsWindow() 
-            => WindowContainer.Open(FullScreenWindowId.Levels);
+            => WindowContainer.Open(HubWindowId.Levels);
 
         private void CloseGame() 
             => Application.Quit();

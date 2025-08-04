@@ -10,9 +10,9 @@ namespace _Project.UI.Services.Windows
 {
     public class WindowContainer : IWindowContainer
     {
-        private FullScreenWindowId _previousFullScreenWindow;
-        private FullScreenWindowId _currentFullScreenWindow;
-        private readonly Dictionary<FullScreenWindowId, WindowBase> _windows;
+        private HubWindowId _previousHubWindow;
+        private HubWindowId _currentHubWindow;
+        private readonly Dictionary<HubWindowId, WindowBase> _windows;
 
         private readonly IUIFactory _uiFactory;
         private readonly IPersistentProgress _progress;
@@ -25,52 +25,53 @@ namespace _Project.UI.Services.Windows
             _uiFactory = uiFactory;
             _progress = progress;
             _saveLoad = saveLoad;
-            _windows = new Dictionary<FullScreenWindowId, WindowBase>();
+            _windows = new Dictionary<HubWindowId, WindowBase>();
             _gameFactory = gameFactory;
         }
 
         public void CleanUp()
         {
-            _currentFullScreenWindow = FullScreenWindowId.Hub;
-            _previousFullScreenWindow = FullScreenWindowId.Unknown;
+            _currentHubWindow = HubWindowId.Hub;
+            _previousHubWindow = HubWindowId.Unknown;
             _windows.Clear();
         }
 
-        public WindowBase GetWindow(FullScreenWindowId fullScreenWindowId)
+        public WindowBase GetWindow(HubWindowId hubWindowId)
         {
-            _windows.TryGetValue(fullScreenWindowId, out var window);
+            _windows.TryGetValue(hubWindowId, out var window);
             if (window == null)
             {
-                window = _uiFactory.InstantiateWindow(fullScreenWindowId);
-                window.ConstructWindow(_progress, fullScreenWindowId, this, _saveLoad, _gameFactory, _uiFactory);
-                _windows[fullScreenWindowId] = window;
+                window = _uiFactory.InstantiateWindow(hubWindowId);
+                
+                window.ConstructWindow(_progress, hubWindowId, this, _saveLoad, _gameFactory, _uiFactory);
+                _windows[hubWindowId] = window;
             }
 
             return window;
         }
 
-        public void Open(FullScreenWindowId fullScreenWindowId, bool closePopUp=false)
+        public void Open(HubWindowId hubWindowId, bool closePopUp=false)
         {
-            var window = GetWindow(fullScreenWindowId);
+            var window = GetWindow(hubWindowId);
 
             // Hide all windows except hub and target window
             foreach (var windowPair in _windows)
             {
-                if (windowPair.Key != fullScreenWindowId)    
+                if (windowPair.Key != hubWindowId)    
                     windowPair.Value.gameObject.SetActive(false);
             }
 
-            _previousFullScreenWindow = _currentFullScreenWindow;
-            _currentFullScreenWindow = fullScreenWindowId;
+            _previousHubWindow = _currentHubWindow;
+            _currentHubWindow = hubWindowId;
 
             window.OnOpened();
             window.gameObject.SetActive(true);
         }
 
         public void ReturnToPreviousWindow() 
-            => Open(_previousFullScreenWindow);
+            => Open(_previousHubWindow);
 
         private void OpenHubMenu(object sender, EventArgs e) 
-            => Open(FullScreenWindowId.Hub);
+            => Open(HubWindowId.Hub);
     }
 }

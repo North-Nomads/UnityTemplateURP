@@ -5,8 +5,8 @@ namespace _Project.UI.Services.Windows
     public interface IWindowContainer
     {
         void CleanUp();
-        void Open(FullScreenWindowId fullScreenWindowId, bool closePopup=false);
-        WindowBase GetWindow(FullScreenWindowId fullScreenWindowId);
+        void Open(HubWindowId hubWindowId, bool closePopup=false);
+        WindowBase GetWindow(HubWindowId hubWindowId);
         void ReturnToPreviousWindow();
     }
 }

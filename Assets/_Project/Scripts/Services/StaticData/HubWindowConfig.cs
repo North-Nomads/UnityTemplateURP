@@ -8,9 +8,9 @@ using UnityEngine.Serialization;
 namespace _Project.StaticData
 {
     [Serializable]
-    public class WindowConfig
+    public class HubWindowConfig
     {
-        [FormerlySerializedAs("WindowId")] public FullScreenWindowId fullScreenWindowId;
+        [FormerlySerializedAs("fullScreenWindowId")] [FormerlySerializedAs("WindowId")] public HubWindowId hubWindowId;
         public WindowBase Prefab;
     }
 
