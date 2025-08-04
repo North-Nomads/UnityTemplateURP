@@ -1,5 +1,6 @@
 ﻿using _Project.Infrastructure.InGameTime;
 using _Project.Infrastructure.SaveLoad;
+using _Project.Scripts.Services.SceneLoader;
 using _Project.Services.AssetManagement;
 using _Project.Services.Factory;
 using _Project.Services.States;
@@ -28,6 +29,7 @@ namespace _Project.Infrastructure
             builder.AddSingleton(typeof(PersistentProgress), typeof(IPersistentProgress));
             builder.AddSingleton(typeof(PlayerPrefsSaveLoad), typeof(ISaveLoad));
             builder.AddSingleton(typeof(ScriptableStaticData), typeof(IStaticData));
+            builder.AddSingleton(typeof(AsyncSceneLoader), typeof(ISceneLoader));
 
             builder.AddScoped(typeof(GameFactory), typeof(IGameFactory), typeof(ISavedProgressReader),
                 typeof(IProgressUpdater));
