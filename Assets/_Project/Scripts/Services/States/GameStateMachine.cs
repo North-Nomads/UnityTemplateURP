@@ -8,7 +8,6 @@ using _Project.Services.Factory;
 using _Project.Services.PlayerProgress;
 using _Project.StaticData;
 using _Project.UI.Services.Factory;
-using _Project.UI.Services.GameWindows;
 using _Project.UI.Services.Windows;
 
 namespace _Project.Services.States
@@ -20,17 +19,17 @@ namespace _Project.Services.States
 
         public GameStateMachine(IPersistentProgress persistentProgress, ISaveLoad saveLoad, IGameFactory gameFactory,
             IUIFactory uiFactory, IWindowContainer windowContainer, IAssetProvider assetProvider, IStaticData staticData,
-            IGameWindow gameWindow, ILevelProgress levelProgress, IInGameTimeService timeService, IEnumerable<ISavedProgressReader> saveReaderServices)
+            ILevelProgress levelProgress, IInGameTimeService timeService, IEnumerable<ISavedProgressReader> saveReaderServices)
         {
             _states = new Dictionary<Type, IExitableState>
             {
                 [typeof(BootstrapState)] = new BootstrapState(this),
                 [typeof(LoadProgressState)] = new LoadProgressState(this, persistentProgress, saveLoad),
-                [typeof(LoadHubState)] = new LoadHubState(this),
-                [typeof(HubState)] = new HubState(this, gameFactory, persistentProgress, uiFactory, windowContainer, saveReaderServices, assetProvider),
-                [typeof(LoadLevelState)] = new LoadLevelState(this, gameFactory, persistentProgress, staticData, gameWindow, uiFactory, levelProgress),
-                [typeof(LoopLevelState)] = new LoopLevelState(this, saveLoad, gameWindow, levelProgress),
-                [typeof(FinishedLevelState)] = new FinishedLevelState(this, persistentProgress, gameWindow, persistentProgress, timeService)
+                [typeof(LoadHubState)] = new LoadHubState(this, windowContainer),
+                [typeof(HubState)] = new HubState(this, saveReaderServices, windowContainer),
+                [typeof(LoadLevelState)] = new LoadLevelState(this, gameFactory, persistentProgress, staticData, uiFactory, levelProgress),
+                [typeof(LoopLevelState)] = new LoopLevelState(this, saveLoad, levelProgress),
+                [typeof(FinishedLevelState)] = new FinishedLevelState(this, persistentProgress, persistentProgress, timeService)
             };
         }
 

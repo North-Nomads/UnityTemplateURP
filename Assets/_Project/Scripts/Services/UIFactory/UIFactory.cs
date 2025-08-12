@@ -1,11 +1,5 @@
 using _Project.Services.AssetManagement;
 using _Project.StaticData;
-using _Project.UI.GameWindows;
-using _Project.UI.Services.GameWindows;
-using _Project.UI.Services.Windows;
-using _Project.UI.Windows;
-using Reflex.Extensions;
-using Reflex.Injectors;
 using UnityEngine;
 
 namespace _Project.UI.Services.Factory
@@ -26,25 +20,5 @@ namespace _Project.UI.Services.Factory
 
         public void CreateUIRoot()
             => _uiRoot = _assets.Instantiate(UIRootPath).transform;
-
-        public WindowBase InstantiateWindow(HubWindowId hubWindowId)
-        {
-            HubWindowConfig config = _staticData.ForWindow(hubWindowId);
-            WindowBase window = Object.Instantiate(config.Prefab, _uiRoot);
-            GameObjectInjector.InjectRecursive(window.gameObject, window.gameObject.scene.GetSceneContainer());
-            window.transform.SetAsFirstSibling();
-            window.gameObject.SetActive(false);
-            return window;
-        }
-
-        public GameWindowBase InstantiateWindow(GameWindowId windowID)
-        {
-            GameWindowConfig config = _staticData.ForGameWindow(windowID);
-            GameWindowBase window = Object.Instantiate(config.Prefab, _uiRoot);
-            GameObjectInjector.InjectRecursive(window.gameObject, window.gameObject.scene.GetSceneContainer());
-            window.transform.SetAsFirstSibling();
-            window.gameObject.SetActive(false);
-            return window;
-        }
     }
 }

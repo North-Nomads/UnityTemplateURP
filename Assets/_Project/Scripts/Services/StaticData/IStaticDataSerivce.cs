@@ -1,6 +1,5 @@
+using _Project.MVVM;
 using _Project.Services.CurrentLevelProgress;
-using _Project.UI.Services.GameWindows;
-using _Project.UI.Services.Windows;
 
 namespace _Project.StaticData
 {
@@ -8,7 +7,5 @@ namespace _Project.StaticData
     {
         void LoadStaticData();
         LevelConfig ForLevel(int levelID);
-        HubWindowConfig ForWindow(HubWindowId endGame);
-        GameWindowConfig ForGameWindow(GameWindowId endGame);
     }
 }

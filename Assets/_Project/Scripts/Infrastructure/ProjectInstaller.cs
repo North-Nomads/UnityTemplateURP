@@ -1,6 +1,7 @@
 ﻿using _Project.Infrastructure.InGameTime;
 using _Project.Infrastructure.SaveLoad;
-using _Project.Scripts.Services.SceneLoader;
+using _Project.Models;
+using _Project.Services.SceneLoader;
 using _Project.Services.AssetManagement;
 using _Project.Services.Factory;
 using _Project.Services.States;
@@ -8,8 +9,9 @@ using _Project.Services.CurrentLevelProgress;
 using _Project.Services.PlayerProgress;
 using _Project.StaticData;
 using _Project.UI.Services.Factory;
-using _Project.UI.Services.GameWindows;
 using _Project.UI.Services.Windows;
+using _Project.UI.ViewModels;
+using _Project.UI.Views;
 using Reflex.Core;
 using UnityEngine;
 
@@ -37,11 +39,15 @@ namespace _Project.Infrastructure
             builder.AddScoped(typeof(LevelProgress), typeof(ILevelProgress));
             builder.AddScoped(typeof(InGameTimeService), typeof(IInGameTimeService));
             builder.AddScoped(typeof(WindowContainer), typeof(IWindowContainer));
-            builder.AddScoped(typeof(GameWindow), typeof(IGameWindow));
             
+            builder.AddSingleton(typeof(UserModel)); // one shared instance
+            builder.AddSingleton(typeof(UserMoneyViewModel)); // one shared VM
 
             builder.AddSingleton(typeof(GameStateMachine));
-            builder.OnContainerBuilt += container => container.Single<GameStateMachine>().Enter<BootstrapState>();
+            builder.OnContainerBuilt += container =>
+            {
+                container.Single<GameStateMachine>().Enter<BootstrapState>();
+            };
         }
     }
 }

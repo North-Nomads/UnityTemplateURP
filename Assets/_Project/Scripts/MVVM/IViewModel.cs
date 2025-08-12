@@ -1,6 +1,4 @@
 ﻿namespace _Project.MVVM
 {
-    public interface IViewModel
-    {
-    }
+    public interface IViewModel { }
 }
