@@ -11,6 +11,6 @@
         public const string MobCoroutineRunner = "Prefabs/Other/MobCoroutineRunner";
         public const string TutorialImagePath = "Prefabs/Tutorial/TutorialImage";
         public const string TutorialWindowPath = "Prefabs/Tutorial/TutorialWindow";
-        public const string MoneyUI = "Prefabs/Tutorial/MoneyUI";
+        public const string MoneyUI = "Prefabs/UI/MoneyUI";
     }
 }

@@ -2,8 +2,6 @@ namespace _Project.Services
 {
     public static class Constants
     {
-        public const string HubSceneName = "Menu";
-
         public const string CoreSpawnPoint = "CoreSpawnPoint";
 
         public const float TimeToTick = .1f;
