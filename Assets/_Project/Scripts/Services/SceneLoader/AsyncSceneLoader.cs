@@ -8,11 +8,20 @@ namespace _Project.Services.SceneLoader
 {
     public class AsyncSceneLoader : ISceneLoader
     {
-        public void Load(string name, Action onLoaded = null) 
-            => SingletonCoroutineRunner.RunRoutine(LoadScene(name, onLoaded));
+        public AsyncSceneLoader()
+        {
+            Debug.Log("Created async scene loaded");
+        }
 
         public IEnumerator LoadScene(string name, Action onLoaded = null)
         {
+            Debug.Log("Started loading...");
+            if (SceneManager.GetActiveScene().name == name)
+            {
+                onLoaded?.Invoke();
+                yield break;
+            }
+
             AsyncOperation waitNextScene = SceneManager.LoadSceneAsync(name);
             
             while (!waitNextScene.isDone)

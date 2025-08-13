@@ -5,6 +5,9 @@ using _Project.Services.Factory;
 using _Project.Services.PlayerProgress;
 using _Project.UI.Services.Factory;
 using _Project.UI.Services.Windows;
+using _Project.UI.Views;
+using Reflex.Extensions;
+using UnityEngine.SceneManagement;
 
 namespace _Project.Services.States
 {
@@ -26,6 +29,7 @@ namespace _Project.Services.States
 
         public void Enter()
         {
+            
         }
 
         public void Exit()

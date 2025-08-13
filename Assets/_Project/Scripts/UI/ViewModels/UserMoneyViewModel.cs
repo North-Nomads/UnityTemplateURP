@@ -2,8 +2,6 @@
 using _Project.Models;
 using _Project.MVVM;
 using R3;
-using Unity.VisualScripting;
-using UnityEngine;
 
 namespace _Project.UI.ViewModels
 {

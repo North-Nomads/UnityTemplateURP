@@ -1,10 +1,9 @@
-﻿using System;
-using _Project.UI.ViewModels;
-using R3;
-using Reflex.Attributes;
+﻿using R3;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Reflex.Attributes;
+using _Project.UI.ViewModels;
 
 namespace _Project.UI.Views
 {
@@ -32,8 +31,6 @@ namespace _Project.UI.Views
             _viewModel.AddOne();
         }
         
-        
-
         [Inject]
         public void Construct(UserMoneyViewModel viewModel)
         {

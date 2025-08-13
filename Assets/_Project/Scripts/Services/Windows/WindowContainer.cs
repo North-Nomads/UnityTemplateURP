@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using _Project.MVVM;
 using _Project.UI.Services.Factory;
 using _Project.UI.Views;
-using UnityEngine;
 
 namespace _Project.UI.Services.Windows
 {
@@ -17,7 +15,7 @@ namespace _Project.UI.Services.Windows
             _uiFactory = uiFactory;
         }
 
-        public TView Open<TView>(GameObject prefab) where TView : View
+        public TView Open<TView>() where TView : View
         {
             var type = typeof(TView);
 

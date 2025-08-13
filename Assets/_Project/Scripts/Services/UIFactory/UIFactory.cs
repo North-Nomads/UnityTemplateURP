@@ -1,8 +1,7 @@
-using _Project.MVVM;
-using _Project.Services;
 using _Project.Services.AssetManagement;
 using _Project.StaticData;
 using _Project.UI.Views;
+using Reflex.Core;
 using Reflex.Extensions;
 using Reflex.Injectors;
 using UnityEngine;
@@ -31,8 +30,9 @@ namespace _Project.UI.Services.Factory
             if (_uiRoot == null)
                 CreateUIRoot();
 
-            TView view = _assets.Instantiate<TView>(AssetPath.MoneyUI);
-            GameObjectInjector.InjectObject(view.gameObject, view.gameObject.scene.GetSceneContainer());
+            TView view = _assets.Instantiate<TView>(AssetPath.MoneyUI, _uiRoot);
+            Container sceneContainer = view.gameObject.scene.GetSceneContainer();
+            GameObjectInjector.InjectObject(view.gameObject, sceneContainer);
             return view;
         }
     }
