@@ -2,6 +2,7 @@
 using _Project.Models;
 using _Project.MVVM;
 using R3;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace _Project.UI.ViewModels
@@ -10,26 +11,24 @@ namespace _Project.UI.ViewModels
     {
         private readonly UserModel _model;
 
-        // Observables for the view to subscribe
-        public ReactiveProperty<int> Money { get; } = new (300);
+        public ReadOnlyReactiveProperty<int> Money => _money;
+        private readonly ReactiveProperty<int> _money = new(300);
 
         public UserMoneyViewModel(UserModel model)
         {
             _model = model ?? throw new ArgumentNullException(nameof(model));
-            Money.Value = _model.Money;
+            _model.Money.Subscribe(onNext => _money.Value = onNext);
         }
 
         // Commands (methods) that View binders can call
         public void AddOne()
         {
             _model.Add(1);
-            Money.Value = _model.Money;
         }
 
         public void RemoveOne()
         {
             _model.Remove(1);
-            Money.Value = _model.Money;
         }
     }
 }

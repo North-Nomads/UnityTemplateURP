@@ -11,7 +11,6 @@ using _Project.StaticData;
 using _Project.UI.Services.Factory;
 using _Project.UI.Services.Windows;
 using _Project.UI.ViewModels;
-using _Project.UI.Views;
 using Reflex.Core;
 using UnityEngine;
 

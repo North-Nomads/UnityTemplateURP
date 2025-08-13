@@ -3,18 +3,21 @@ using UnityEngine;
 
 namespace _Project.UI.Views
 {
-    public abstract class View: MonoBehaviour 
+    public abstract class View : MonoBehaviour
     {
-        public IViewModel ViewModel { get; set; }
-
-        public void SetViewModel(IViewModel viewModel)
+        public virtual void OnShow()
         {
-            ViewModel = viewModel;
+            gameObject.SetActive(true);
         }
 
+        public virtual void OnHide()
+        {
+            gameObject.SetActive(false);
+        }
 
-        public virtual void OnShow() { gameObject.SetActive(true); }
-        public virtual void OnHide() { gameObject.SetActive(false); }
-        public virtual void OnClose() { Destroy(gameObject); }
+        public virtual void OnClose()
+        {
+            Destroy(gameObject);
+        }
     }
 }

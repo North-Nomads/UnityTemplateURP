@@ -1310,10 +1310,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1809325225}
-  - component: {fileID: 1809325226}
-  - component: {fileID: 1809325229}
-  - component: {fileID: 1809325228}
-  - component: {fileID: 1809325227}
+  - component: {fileID: 1809325230}
   m_Layer: 5
   m_Name: Player HUD
   m_TagString: Untagged
@@ -1343,7 +1340,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1809325226
+--- !u!114 &1809325230
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1352,51 +1349,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1809325224}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0497ec5bce864a6b878c42cd6fb1d07a, type: 3}
+  m_Script: {fileID: 11500000, guid: 0de3a8e0814242b598ccbb62babb257e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1809325227
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1809325224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c2af2f04ec64c2fb667339760739bf3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MethodName: RemoveOne
-  TargetButton: {fileID: 1447467710}
---- !u!114 &1809325228
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1809325224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c2af2f04ec64c2fb667339760739bf3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MethodName: AddOne
-  TargetButton: {fileID: 816425814}
---- !u!114 &1809325229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1809325224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7908247f471246b8bd151a18fe0a41b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PropertyName: Money
-  TargetText: {fileID: 306734424}
+  text: {fileID: 306734424}
+  buttonAdd: {fileID: 1447467710}
+  buttonRemove: {fileID: 816425814}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using _Project.MVVM;
-using _Project.StaticData;
 using _Project.UI.Services.Factory;
 using _Project.UI.Views;
 using UnityEngine;
@@ -10,20 +9,28 @@ namespace _Project.UI.Services.Windows
 {
     public class WindowContainer : IWindowContainer
     {
+        private readonly IUIFactory _uiFactory;
         private readonly Dictionary<Type, View> _windows = new();
-        private readonly IStaticData _staticData;
-        private readonly UIFactory _factory;
 
-
-        public WindowContainer(IStaticData staticData, UIFactory factory)
+        public WindowContainer(IUIFactory uiFactory)
         {
-            _staticData = staticData;
-            _factory = factory;
+            _uiFactory = uiFactory;
         }
-        
+
         public TView Open<TView>(GameObject prefab) where TView : View
         {
-            throw new NotImplementedException();
+            var type = typeof(TView);
+
+            if (_windows.TryGetValue(type, out var existing))
+            {
+                existing.OnShow();
+                return (TView)existing;
+            }
+
+            TView view = _uiFactory.CreateViewWithInjection<TView>();
+            _windows[type] = view;
+            view.OnShow();
+            return view;
         }
 
         public void Close<TView>() where TView : View
