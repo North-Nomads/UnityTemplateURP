@@ -21,7 +21,7 @@ namespace _Project.Services.States
         public void Enter()
         {
             LoadProgressOrInitNew();
-            _gameStateMachine.Enter<HubState>();
+            _gameStateMachine.Enter<LoadHubState>();
         }
 
         public void Exit()

@@ -5,37 +5,31 @@ using _Project.Services.Factory;
 using _Project.Services.PlayerProgress;
 using _Project.UI.Services.Factory;
 using _Project.UI.Services.Windows;
+using _Project.UI.Views;
+using Reflex.Extensions;
+using UnityEngine.SceneManagement;
 
 namespace _Project.Services.States
 {
     public class HubState : IState
     {
         public IEnumerable<ISavedProgressReader> SaveReaderServices { get; }
-        private readonly IPersistentProgress _progress;
-        private readonly GameStateMachine _stateMachine;
-        private readonly IWindowContainer _windowContainer;
-        private readonly IAssetProvider _assetProvider;
-        private readonly IGameFactory _gameFactory;
-        private readonly IUIFactory _uiFactory;
+        
         private readonly IEnumerator<ISavedProgressReader> _saveReaderServices;
+        private readonly GameStateMachine _gameStateMachine;
+        private readonly IWindowContainer _windowContainer;
 
-        public HubState(GameStateMachine gameStateMachine,
-            IGameFactory gameFactory, IPersistentProgress progress, IUIFactory uiFactory, 
-            IWindowContainer windowContainer, IEnumerable<ISavedProgressReader> saveReaderServices,
-            IAssetProvider assetProvider)
+        public HubState(GameStateMachine gameStateMachine, IEnumerable<ISavedProgressReader> saveReaderServices,
+            IWindowContainer windowContainer)
         {
-            SaveReaderServices = saveReaderServices;
-            _stateMachine = gameStateMachine;
-            _gameFactory = gameFactory;
-            _progress = progress;
-            _uiFactory = uiFactory;
+            _gameStateMachine = gameStateMachine;
             _windowContainer = windowContainer;
-            _assetProvider = assetProvider;
+            SaveReaderServices = saveReaderServices;
         }
 
         public void Enter()
         {
-            _windowContainer.CleanUp();
+            
         }
 
         public void Exit()

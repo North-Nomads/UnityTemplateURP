@@ -3,19 +3,15 @@ using _Project.Services.CurrentLevelProgress;
 using _Project.Services;
 using _Project.Services.PlayerProgress;
 using _Project.StaticData;
-using _Project.UI.GameWindows;
 using _Project.UI.Services;
 using _Project.UI.Services.Factory;
-using _Project.UI.Services.GameWindows;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace _Project.Services.States
 {
     public class LoadLevelState : IPayloadedState<string>
     {
         private readonly IPersistentProgress _progress;
-        private readonly IGameWindow _gameWindow;
         private readonly IUIFactory _uiFactory;
         private readonly GameStateMachine _gameStateMachine;
         private readonly IStaticData _staticData;
@@ -25,14 +21,13 @@ namespace _Project.Services.States
 
         public LoadLevelState(GameStateMachine gameStateMachine,
             IGameFactory gameFactory, IPersistentProgress progress,
-            IStaticData staticData, IGameWindow gameWindow, IUIFactory uiFactory,
+            IStaticData staticData, IUIFactory uiFactory,
             ILevelProgress levelProgress)
         {
             _gameStateMachine = gameStateMachine;
             _gameFactory = gameFactory;
             _progress = progress;
             _staticData = staticData;
-            _gameWindow = gameWindow;
             _uiFactory = uiFactory;
             _levelProgress = levelProgress;
         }
@@ -63,21 +58,7 @@ namespace _Project.Services.States
         private void InitializeInGameHUD()
         {
             _uiFactory.CreateUIRoot();
-            _gameWindow.GetWindow(GameWindowId.InGameHUD)
-                .GetComponent<InGameHUD>();
-            _gameWindow.GetWindow(GameWindowId.EndGame);
-            _gameWindow.GetWindow(GameWindowId.BeforeGameHUD);
-            InitializePauseMenu();
-            _gameWindow.Open(GameWindowId.BeforeGameHUD);
-        }
 
-        private void InitializePauseMenu()
-        {
-            InGamePauseMenu pauseMenu = _gameWindow.GetWindow(GameWindowId.InGamePauseMenu)
-                .GetComponent<InGamePauseMenu>();
-            pauseMenu.RestartButtonPressed += (_, _) =>
-                _gameStateMachine.Enter<LoadLevelState, string>(SceneManager.GetActiveScene().name);
-            pauseMenu.ReturnToMenuButtonPressed += (_, _) => _gameStateMachine.Enter<HubState>();
         }
     }
 }

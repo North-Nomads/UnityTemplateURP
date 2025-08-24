@@ -1,12 +1,11 @@
-﻿using _Project.UI.Windows;
+﻿using _Project.MVVM;
+using _Project.UI.Views;
 
 namespace _Project.UI.Services.Windows
 {
     public interface IWindowContainer
     {
-        void CleanUp();
-        void Open(HubWindowId hubWindowId, bool closePopup=false);
-        WindowBase GetWindow(HubWindowId hubWindowId);
-        void ReturnToPreviousWindow();
+        TView Open<TView>() where TView : View;
+        void Close<TView>() where TView : View;
     }
 }

@@ -15,11 +15,9 @@ namespace _Project.Services.CurrentLevelProgress
         
         private int _mobsLeftThisWave;
         private int _currentWaveIndex;
-        private MobWave _loadedWave;
         private bool _isLastWave;
 
         public LevelConfig LoadedLevelConfig => _loadedLevelConfig;
-        public MobWave LoadedWave => _loadedWave;
 
         public bool IsLevelSuccessfullyFinished { get; private set; }
 
@@ -34,16 +32,6 @@ namespace _Project.Services.CurrentLevelProgress
             _loadedLevelConfig = levelConfig;
             _currentWaveIndex = 0;
             _isLastWave = false;
-            LoadCurrentWaveConfig();
-        }
-
-        public float GetCurrentWaveTimer()
-            => _loadedWave.SecondsDelayBeforeWave;
-
-        private void LoadCurrentWaveConfig()
-        {
-            _loadedWave = _loadedLevelConfig.MobWaves[_currentWaveIndex];
-            _mobsLeftThisWave = _loadedWave.Gates.Sum(gate => gate.LevelEnemies.Sum(enemy => enemy.Quantity));
         }
     }
 }
